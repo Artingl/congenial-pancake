@@ -45,16 +45,16 @@ class MainWin(QMainWindow):
             self.maps.spn -= speed
             keyD = True
         if event.key() == Qt.Key_Up:
-            self.maps.pos[1] += speed
+            self.maps.pos[1] += self.maps.spn
             keyD = True
         if event.key() == Qt.Key_Down:
-            self.maps.pos[1] -= speed
+            self.maps.pos[1] -= self.maps.spn
             keyD = True
         if event.key() == Qt.Key_Left:
-            self.maps.pos[0] -= speed
+            self.maps.pos[0] -= self.maps.spn
             keyD = True
         if event.key() == Qt.Key_Right:
-            self.maps.pos[0] += speed
+            self.maps.pos[0] += self.maps.spn
             keyD = True
         if keyD:
             self.find_place()
