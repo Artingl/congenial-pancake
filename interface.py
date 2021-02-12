@@ -39,10 +39,10 @@ class MainWin(QMainWindow):
         keyD = False
         speed = 0.002
         if event.key() == Qt.Key_Up:
-            self.maps.pos[1] -= speed
+            self.maps.pos[1] += speed
             keyD = True
         if event.key() == Qt.Key_Down:
-            self.maps.pos[1] += speed
+            self.maps.pos[1] -= speed
             keyD = True
         if event.key() == Qt.Key_Left:
             self.maps.pos[0] -= speed
