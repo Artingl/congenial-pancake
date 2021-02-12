@@ -1,7 +1,7 @@
 import sys
-import requests
 
 from PyQt5 import uic
+from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
@@ -13,8 +13,7 @@ class MainWin(QMainWindow):
         super().__init__()
         uic.loadUi('main.ui', self)
         self.maps = Maps()
-        self.image = None
-        self.place = None
+        self.image = self.place = self.layer = None
 
         self.button_connect()
 
@@ -23,8 +22,18 @@ class MainWin(QMainWindow):
 
     def find_place(self):
         self.place = (self.longitude.text(), self.latitude.text())
-        self.image = QPixmap(self.maps.getImage(*self.place))
+        self.image = QPixmap(self.maps.getImage(*self.place, self.layer))
         self.map_label.setPixmap(self.image)
+
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Up:
+            print("UP")
+        if event.key() == Qt.Key_Down:
+            print("DOWN")
+        if event.key() == Qt.Key_Left:
+            print("LEFT")
+        if event.key() == Qt.Key_Right:
+            print("RIGHT")
 
 
 if __name__ == '__main__':
