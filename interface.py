@@ -54,7 +54,7 @@ class MainWin(QMainWindow):
             self.maps.pos[0] -= self.maps.spn
             keyD = True
         if event.key() == Qt.Key_Right:
-            self.maps.pos[0] += self.maps.spn
+            self.maps.pos[0] quit()+= self.maps.spn
             keyD = True
         if keyD:
             self.find_place()
