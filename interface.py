@@ -2,21 +2,27 @@ import sys
 import requests
 
 from PyQt5 import uic
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
+
+from maps import Maps
 
 
 class MainWin(QMainWindow):
     def __init__(self):
         super().__init__()
         uic.loadUi('main.ui', self)
-        self.image = None
-        self.place = None
+        self.maps = Maps()
+        self.image = QPixmap(self.maps.getImage(37.530887, 55.70311))
+        self.place = "0,0"
+
+        self.button_connect()
 
     def button_connect(self):
         self.find_button.clicked.connect(self.find_place)
 
     def find_place(self):
-        self.place = self.adress.text()
+        # self.place = self.adress.text()
         self.map_label.setPixmap(self.image)
 
 
