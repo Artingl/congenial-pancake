@@ -16,6 +16,7 @@ class MainWin(QMainWindow):
         self.image = self.place = self.layer = None
 
         self.button_connect()
+        self.setFocus()
 
     def button_connect(self):
         self.find_button.clicked.connect(self.find_place)
@@ -24,6 +25,7 @@ class MainWin(QMainWindow):
         self.place = (self.longitude.text(), self.latitude.text())
         self.image = QPixmap(self.maps.getImage(*self.place, self.layer))
         self.map_label.setPixmap(self.image)
+        self.setFocus()
 
     def keyPressEvent(self, event):
         if event.key() == Qt.Key_Up:
