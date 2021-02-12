@@ -12,7 +12,7 @@ class Maps:
         if not os.path.isdir("temp"):
             os.mkdir("temp")
 
-        map_request = f"http://static-maps.yandex.ru/1.x/?ll={c1},{c2}8&spn=0.002,0.002&l=map"
+        map_request = f"http://static-maps.yandex.ru/1.x/?ll={c1},{c2}&spn=0.002,0.002&l=map"
         response = requests.get(map_request)
 
         with open(res_path, "wb") as file:

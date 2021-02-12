@@ -22,7 +22,7 @@ class MainWin(QMainWindow):
         self.find_button.clicked.connect(self.find_place)
 
     def find_place(self):
-        self.place = (self.latitude.text(), self.longitude.text())
+        self.place = (self.longitude.text(), self.latitude.text())
         self.image = QPixmap(self.maps.getImage(*self.place))
         self.map_label.setPixmap(self.image)
 
