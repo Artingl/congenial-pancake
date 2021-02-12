@@ -22,24 +22,45 @@ class MainWin(QMainWindow):
         self.find_button.clicked.connect(self.find_place)
 
     def find_place(self):
+        self.layer = self.layer_chooser.currentText()
+        if self.layer == 'Схема':
+            self.layer = 'map'
+        if self.layer == 'Спутник':
+            self.layer = 'sat'
+        if self.layer == 'Гибрид':
+            self.layer = 'sat,skl'
+
         self.place = (self.longitude.text(), self.latitude.text())
         self.image = QPixmap(self.maps.getImage(*self.place, self.layer))
         self.map_label.setPixmap(self.image)
         self.setFocus()
 
     def keyPressEvent(self, event):
+        keyD = False
+        speed = 0.002
         if event.key() == Qt.Key_Up:
-            print("UP")
+            self.maps.pos[1] -= speed
+            keyD = True
         if event.key() == Qt.Key_Down:
-            print("DOWN")
+            self.maps.pos[1] += speed
+            keyD = True
         if event.key() == Qt.Key_Left:
-            print("LEFT")
+            self.maps.pos[0] -= speed
+            keyD = True
         if event.key() == Qt.Key_Right:
-            print("RIGHT")
+            self.maps.pos[0] += speed
+            keyD = True
+        if keyD:
+            self.find_place()
+
+
+def except_hook(cls, exception, traceback):
+    sys.__excepthook__(cls, exception, traceback)
 
 
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = MainWin()
     ex.show()
+    sys.excepthook = except_hook
     sys.exit(app.exec_())
