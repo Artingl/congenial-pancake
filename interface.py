@@ -13,8 +13,8 @@ class MainWin(QMainWindow):
         super().__init__()
         uic.loadUi('main.ui', self)
         self.maps = Maps()
-        self.image = QPixmap(self.maps.getImage(37.530887, 55.70311))
-        self.place = "0,0"
+        self.image = None
+        self.place = None
 
         self.button_connect()
 
@@ -22,7 +22,8 @@ class MainWin(QMainWindow):
         self.find_button.clicked.connect(self.find_place)
 
     def find_place(self):
-        self.place = (self.latitude, self.longitude)
+        self.place = (self.latitude.text(), self.longitude.text())
+        self.image = QPixmap(self.maps.getImage(*self.place))
         self.map_label.setPixmap(self.image)
 
 
