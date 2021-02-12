@@ -18,16 +18,16 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>70</y>
+      <y>90</y>
       <width>791</width>
-      <height>481</height>
+      <height>471</height>
      </rect>
     </property>
     <property name="text">
      <string/>
     </property>
    </widget>
-   <widget class="QLineEdit" name="coords">
+   <widget class="QLineEdit" name="longitude">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -47,20 +47,43 @@
      </rect>
     </property>
     <property name="text">
-     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;-   enter your adress&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;- enter your longitude&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
    <widget class="QPushButton" name="find_button">
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>20</y>
+      <y>40</y>
       <width>201</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
      <string>Find</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="latitude">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>20</y>
+      <width>321</width>
+      <height>21</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>20</y>
+      <width>341</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:10pt;&quot;&gt;&amp;lt;- enter your latitude&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
     </property>
    </widget>
   </widget>
