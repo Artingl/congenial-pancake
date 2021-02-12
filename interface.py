@@ -13,8 +13,7 @@ class MainWin(QMainWindow):
         super().__init__()
         uic.loadUi('main.ui', self)
         self.maps = Maps()
-        self.image = None
-        self.place = None
+        self.image = self.place = self.layer = None
 
         self.button_connect()
 
@@ -22,8 +21,16 @@ class MainWin(QMainWindow):
         self.find_button.clicked.connect(self.find_place)
 
     def find_place(self):
+        self.layer = self.layer_chooser.currentText()
+        if self.layer == 'Схема':
+            self.layer = 'map'
+        if self.layer == 'Спутник':
+            self.layer = 'sat'
+        if self.layer == 'Гибрид':
+            self.layer = 'sat,skl'
+
         self.place = (self.longitude.text(), self.latitude.text())
-        self.image = QPixmap(self.maps.getImage(*self.place))
+        self.image = QPixmap(self.maps.getImage(*self.place, self.layer))
         self.map_label.setPixmap(self.image)
 
 
