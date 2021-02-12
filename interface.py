@@ -38,6 +38,12 @@ class MainWin(QMainWindow):
     def keyPressEvent(self, event):
         keyD = False
         speed = 0.002
+        if event.key() == Qt.Key_PageUp:
+            self.maps.spn -= speed
+            keyD = True
+        if event.key() == Qt.Key_PageDown:
+            self.maps.spn += speed
+            keyD = True
         if event.key() == Qt.Key_Up:
             self.maps.pos[1] += speed
             keyD = True
