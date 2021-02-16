@@ -1,7 +1,7 @@
 import sys
 
-from PyQt5 import uic
-from PyQt5.QtCore import Qt
+from PyQt5 import uic, QtGui
+from PyQt5.QtCore import Qt, QPoint
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 
@@ -23,6 +23,20 @@ class MainWin(QMainWindow):
         self.layer_chooser.currentTextChanged.connect(self.find_place)
         self.undo_button.clicked.connect(self.find_place)
 
+    def mousePressEvent(self, mouse):
+        x = mouse.pos().x()
+        y = mouse.pos().y()
+
+        if self.map_label.pos().x() < x < self.map_label.pos().x() + self.map_label.width() and \
+                self.map_label.pos().y() < y < self.map_label.pos().y() + self.map_label.height():
+            x = (x - self.map_label.pos().x()) - (self.map_label.width() / 2)
+            y = (y - self.map_label.pos().y()) - (self.map_label.height() / 2)
+
+            # TODO
+
+            self.maps.pt[1] = (c1, c2)
+            self.find_place()
+
     def find_place(self):
         if type(self.sender()).__name__ == 'QPushButton':
             if self.sender().text() == 'Undo':
@@ -33,7 +47,7 @@ class MainWin(QMainWindow):
                 self.longitude.setText("")
                 self.latitude.setText("")
                 self.geodata_text.setText("")
-                return 
+                return
             elif self.sender().text() == "Find":
                 self.maps.show_pt = True
         self.layer = self.layer_chooser.currentText()
