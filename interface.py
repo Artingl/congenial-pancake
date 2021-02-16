@@ -27,6 +27,7 @@ class MainWin(QMainWindow):
         if type(self.sender()).__name__ == 'QPushButton':
             if self.sender().text() == 'Undo':
                 self.maps.show_pt = False
+                self.geodata_text.setText("")
             elif self.sender().text() == "Find":
                 self.maps.show_pt = True
         self.layer = self.layer_chooser.currentText()
