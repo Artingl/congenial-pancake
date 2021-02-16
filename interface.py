@@ -39,10 +39,10 @@ class MainWin(QMainWindow):
             self.layer = 'sat,skl'
         if self.longitude.text() and self.latitude.text():
             self.place = (self.longitude.text(), self.latitude.text())
-            self.image = QPixmap(self.maps.getImage(c1=self.place[0], c2=self.place[1], layer=self.layer))
+            self.image = QPixmap(self.maps.getImage(self, c1=self.place[0], c2=self.place[1], layer=self.layer))
         if self.geodata_text.text():
             self.place = self.geodata_text.text()
-            self.image = QPixmap(self.maps.getImage(geo=self.place, layer=self.layer))
+            self.image = QPixmap(self.maps.getImage(self, geo=self.place, layer=self.layer))
         self.map_label.setPixmap(self.image)
         self.setFocus()
 
