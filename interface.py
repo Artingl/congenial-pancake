@@ -29,6 +29,11 @@ class MainWin(QMainWindow):
                 self.maps.show_pt = False
                 self.geodata_text.setText("")
                 self.adress_label.setText("")
+
+                self.longitude.setText("")
+                self.latitude.setText("")
+                self.geodata_text.setText("")
+                return 
             elif self.sender().text() == "Find":
                 self.maps.show_pt = True
         self.layer = self.layer_chooser.currentText()
