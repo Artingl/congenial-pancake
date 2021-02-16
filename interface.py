@@ -20,6 +20,7 @@ class MainWin(QMainWindow):
 
     def button_connect(self):
         self.find_button.clicked.connect(self.find_place)
+        self.layer_chooser.currentTextChanged.connect(self.find_place)
 
     def find_place(self):
         self.layer = self.layer_chooser.currentText()
