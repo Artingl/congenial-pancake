@@ -28,6 +28,7 @@ class MainWin(QMainWindow):
             if self.sender().text() == 'Undo':
                 self.maps.show_pt = False
                 self.geodata_text.setText("")
+                self.adress_label.setText("")
             elif self.sender().text() == "Find":
                 self.maps.show_pt = True
         self.layer = self.layer_chooser.currentText()

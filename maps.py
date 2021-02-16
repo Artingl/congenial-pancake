@@ -56,7 +56,7 @@ class Maps:
                 self.pt[1] = (x, y)
             return self.getImage(parent_class, x, y, 0, layer)
         response = requests.get(map_request)
-        parent_class.adress_label.setText(self.getAddress(c1, c2))
+        parent_class.adress_label.setText("Info: " + self.getAddress(c1, c2))
 
         with open(res_path, "wb") as file:
             file.write(response.content)
