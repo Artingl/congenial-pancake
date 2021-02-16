@@ -22,6 +22,7 @@ class Maps:
             if (c1, c2) not in self.pt.values():
                 self.pt[1] = (c1, c2)
                 return self.getImage(c1, c2, geo, layer)
+            print(layer)
             map_request = f"http://static-maps.yandex.ru/1.x/?ll={float(c1) + self.pos[0]},{float(c2) + self.pos[1]}" \
                           f"&spn={self.spn},{self.spn}&l={layer}" + pt
         if geo != 0:
@@ -36,7 +37,7 @@ class Maps:
             y = splitted[1]
             if (x, y) not in self.pt.values():
                 self.pt[1] = (x, y)
-                return self.getImage(x, y, geo, layer)
+            return self.getImage(x, y, 0, layer)
         response = requests.get(map_request)
 
         with open(res_path, "wb") as file:
