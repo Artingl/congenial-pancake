@@ -30,9 +30,12 @@ class MainWin(QMainWindow):
             self.layer = 'sat'
         if self.layer == 'Гибрид':
             self.layer = 'sat,skl'
-
-        self.place = (self.longitude.text(), self.latitude.text())
-        self.image = QPixmap(self.maps.getImage(*self.place, self.layer))
+        if self.longitude.text() and self.lattitude.text():
+            self.place = (self.longitude.text(), self.latitude.text())
+            self.image = QPixmap(self.maps.getImage(c1=self.place[0], c2=self.place[1], layer=self.layer))
+        if self.geodata_text.text():
+            self.place = self.geodata_text.text()
+            self.image = QPixmap(self.maps.getImage(geo=self.place, layer=self.layer))
         self.map_label.setPixmap(self.image)
         self.setFocus()
 
@@ -46,16 +49,16 @@ class MainWin(QMainWindow):
             self.maps.spn -= speed
             keyD = True
         if event.key() == Qt.Key_Up:
-            self.maps.pos[1] += self.maps.spn
+            self.maps.pos[1] += self.maps.spn * 2
             keyD = True
         if event.key() == Qt.Key_Down:
-            self.maps.pos[1] -= self.maps.spn
+            self.maps.pos[1] -= self.maps.spn * 2
             keyD = True
         if event.key() == Qt.Key_Left:
-            self.maps.pos[0] -= self.maps.spn
+            self.maps.pos[0] -= self.maps.spn * 2
             keyD = True
         if event.key() == Qt.Key_Right:
-            self.maps.pos[0] += self.maps.spn
+            self.maps.pos[0] += self.maps.spn * 2
             keyD = True
         if keyD:
             self.find_place()
