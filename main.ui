@@ -179,12 +179,12 @@
      <rect>
       <x>500</x>
       <y>40</y>
-      <width>111</width>
+      <width>131</width>
       <height>20</height>
      </rect>
     </property>
     <property name="text">
-     <string>Enable info</string>
+     <string>Show postal code</string>
     </property>
    </widget>
   </widget>
