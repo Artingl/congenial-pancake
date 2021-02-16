@@ -22,7 +22,6 @@ class Maps:
             if (c1, c2) not in self.pt.values():
                 self.pt[1] = (c1, c2)
                 return self.getImage(c1, c2, geo, layer)
-            print(layer)
             map_request = f"http://static-maps.yandex.ru/1.x/?ll={float(c1) + self.pos[0]},{float(c2) + self.pos[1]}" \
                           f"&spn={self.spn},{self.spn}&l={layer}" + pt
         if geo != 0:

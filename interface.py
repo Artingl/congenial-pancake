@@ -30,7 +30,7 @@ class MainWin(QMainWindow):
             self.layer = 'sat'
         if self.layer == 'Гибрид':
             self.layer = 'sat,skl'
-        if self.longitude.text() and self.lattitude.text():
+        if self.longitude.text() and self.latitude.text():
             self.place = (self.longitude.text(), self.latitude.text())
             self.image = QPixmap(self.maps.getImage(c1=self.place[0], c2=self.place[1], layer=self.layer))
         if self.geodata_text.text():
