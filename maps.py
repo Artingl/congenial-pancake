@@ -22,7 +22,7 @@ class Maps:
         except Exception:
             pass
 
-        return toponym_address + f", Postal code: {postal}"
+        return toponym_address, f", Postal code: {postal}"
 
     def getImage(self, parent_class, c1=0, c2=0, geo=0, layer=''):
         res_path = "temp/tmp.png"
@@ -56,7 +56,12 @@ class Maps:
                 self.pt[1] = (x, y)
             return self.getImage(parent_class, x, y, 0, layer)
         response = requests.get(map_request)
-        parent_class.adress_label.setText("Info: " + self.getAddress(c1, c2))
+        res = self.getAddress(c1, c2)
+        if parent_class.checkBox.isChecked():
+            res = res[0] + res[1]
+        else:
+            res = res[0]
+        parent_class.adress_label.setText("Info: " + res)
 
         with open(res_path, "wb") as file:
             file.write(response.content)
