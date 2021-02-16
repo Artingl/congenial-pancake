@@ -7,16 +7,19 @@ class Maps:
         self.pos = [0, 0]
         self.spn = 0.002
         self.pt = {}
+        self.show_pt = True
 
     def getImage(self, c1=0, c2=0, geo=0, layer=''):
         res_path = "temp/tmp.png"
         if not os.path.isdir("temp"):
             os.mkdir("temp")
         
-        pt = '&pt='
-        for i in self.pt.items():
-            pt += f'{i[1][0]},{i[1][1]},pmwtm{i[0]}~'
-        pt = pt[:-1]
+        pt = ""
+        if self.show_pt:
+            pt = '&pt='
+            for i in self.pt.items():
+                pt += f'{i[1][0]},{i[1][1]},pmwtm{i[0]}~'
+            pt = pt[:-1]
 
         if c1 != 0 and c2 != 0:
             if (c1, c2) not in self.pt.values():
@@ -36,7 +39,7 @@ class Maps:
             y = splitted[1]
             if (x, y) not in self.pt.values():
                 self.pt[1] = (x, y)
-                return self.getImage(x, y, geo, layer)
+            return self.getImage(x, y, 0, layer)
         response = requests.get(map_request)
 
         with open(res_path, "wb") as file:

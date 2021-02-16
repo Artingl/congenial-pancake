@@ -3,7 +3,7 @@ import sys
 from PyQt5 import uic
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QPixmap
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QPushButton
 
 from maps import Maps
 
@@ -21,8 +21,14 @@ class MainWin(QMainWindow):
     def button_connect(self):
         self.find_button.clicked.connect(self.find_place)
         self.layer_chooser.currentTextChanged.connect(self.find_place)
+        self.undo_button.clicked.connect(self.find_place)
 
     def find_place(self):
+        if type(self.sender()).__name__ == 'QPushButton':
+            if self.sender().text() == 'Undo':
+                self.maps.show_pt = False
+            elif self.sender().text() == "Find":
+                self.maps.show_pt = True
         self.layer = self.layer_chooser.currentText()
         if self.layer == 'Схема':
             self.layer = 'map'
